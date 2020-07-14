@@ -41,11 +41,11 @@ export const CardsDiv = styled(animated.div)`
 //* Drag Mouse
 
 export const MouseContainer = styled.div`
+  display: none;
   position: absolute;
   width: 15rem;
   height: 7rem;
   background-color: #cccccc;
-  display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 5rem;

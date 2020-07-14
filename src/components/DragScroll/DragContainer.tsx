@@ -26,6 +26,7 @@ export const DragContainer = (props: DragContainerProps) => {
 
   useLayoutEffect(() => {
     if (elX > 0 && elY > 0 && isDesktop) {
+      dragComponnentRef.current!.style.display = 'flex';
       dragComponnentRef.current!.style.left = `${
         elX - dragComponnentRef.current!.offsetWidth / 2
       }px`;

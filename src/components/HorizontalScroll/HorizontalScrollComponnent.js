@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import styled from 'styled-components';
 
 const HorizontalSection = styled.section`
@@ -53,11 +53,11 @@ export const HorizontalScrollComponnent = (props) => {
     return objectWidth - vw + vh;
   };
 
-  const handleDynamicHeight = () => {
+  const handleDynamicHeight = useCallback(() => {
     const objectWidth = objectRef.current.scrollWidth;
     const dynamicHeight = calcDynamicHeight(objectWidth);
     setDynamicHeight(dynamicHeight);
-  };
+  }, []);
 
   const applyScrollListener = () => {
     setTranslateX(-containerRef.current.offsetTop);
@@ -72,7 +72,7 @@ export const HorizontalScrollComponnent = (props) => {
       window.removeEventListener('resize', handleDynamicHeight);
       window.removeEventListener('scroll', applyScrollListener);
     };
-  }, []);
+  }, [handleDynamicHeight]);
 
   return (
     <HorizontalSection style={props.style}>
